@@ -59,6 +59,36 @@ Am Ende des Projekts steht eine voll funktionsfähige, sichere und skalierbare H
 # **9. Zeitplanung:**
 Das Projekt wird innerhalb eines Zeitraums von ca. 40 Stunden umgesetzt und dokumentiert, gemäß den IHK-Vorgaben für das Abschlussprojekt.
 
-# **10. Projektbetreuer:**
+# **10. Gantt-Diagramm:**
+
+```mermaid
+gantt
+    title Projektzeitplan
+    dateFormat  YYYY-MM-DD
+    section Analyse und Planung
+    Anforderungen und Zieldefinition       :a1, 2025-02-01, 2d
+    Auswahl der geeigneten Azure-Dienste    :a2, after a1, 2d
+    Sicherheitskonzept mit MFA und Azure Firewall :a3, after a2, 4d
+    section Infrastruktur-Bereitstellung
+    Einrichtung des Azure Virtual Network (VNet) :b1, 2025-02-05, 3d
+    Konfiguration des VPN Gateways         :b2, after b1, 3d
+    Implementierung der Verbindung zum On-Premises-Netzwerk :b3, after b2, 4d
+    section Automatisierung mit Terraform
+    Entwicklung des Terraform Codes        :c1, 2025-02-10, 4d
+    Bereitstellung der Ressourcen mittels IaC :c2, after c1, 4d
+    section Sicherheitsmaßnahmen
+    Aktivierung und Konfiguration von MFA  :d1, 2025-02-14, 3d
+    Absicherung des Netzwerkverkehrs mit Azure Firewall :d2, after d1, 3d
+    section Tests und Validierung
+    Verbindungstests zwischen On-Premises und Azure :e1, 2025-02-17, 2d
+    Überwachung des VPN-Traffics mit Azure Monitor :e2, after e1, 2d
+    Fehleranalyse und Optimierung          :e3, after e2, 2d
+    section Dokumentation und Abschluss
+    Erstellung einer technischen Dokumentation :f1, 2025-02-19, 1d
+    Erstellung einer Präsentation          :f2, after f1, 1d
+    Übergabe und Abschlussbericht          :f3, after f2, 1d
+
+
+# **11. Projektbetreuer:**
 Projektbetreuer: Herren Sebastian Ahrend
 Auszubildender: Mohammad Ghiath Al Haffar
