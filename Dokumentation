@@ -1,0 +1,103 @@
+**Dokumentation: Hybrid Cloud mit Azure VPN und Terraform**
+
+# 1. Einleitung
+
+## 1.1 Ziel des Projekts
+Dieses Projekt beschreibt die Einrichtung einer **Hybrid Cloud-Umgebung** mithilfe von **Azure VPN Gateway** und **Terraform**. Dabei wird eine sichere Verbindung zwischen einer On-Premises-Infrastruktur und der Azure-Cloud hergestellt.
+
+## 1.2 Relevanz für Unternehmen
+Viele Unternehmen betreiben kritische Anwendungen sowohl **On-Premises** als auch in der **Cloud**. Eine sichere, skalierbare und automatisierbare Lösung zur Vernetzung dieser Umgebungen ist essenziell.
+
+# 2. Anforderungen
+
+## 2.1 Technische Voraussetzungen
+- **Azure-Konto** mit Administratorrechten
+- **Terraform** installiert auf einem lokalen Rechner
+- **Azure CLI** für die Authentifizierung
+- **On-Premises-Umgebung** mit einer öffentlichen IP-Adresse
+- **MFA (Multi-Factor Authentication) aktiviert**
+
+# 3. Infrastruktur mit Terraform erstellen
+
+## 3.1 Azure Provider konfigurieren
+
+```hcl
+provider "azurerm" {
+  features {}
+  client_id       = "<appId>"
+  client_secret   = "<password>"
+  tenant_id       = "<tenant>"
+  subscription_id = "<subscription_id>"
+}
+```
+
+## 3.2 Virtuelles Netzwerk (VNet) anlegen
+```hcl
+resource "azurerm_virtual_network" "example" {
+  name                = "example-vnet"
+  location            = "Germany West Central"
+  resource_group_name = "example-resources"
+  address_space       = ["10.0.0.0/16"]
+}
+```
+
+## 3.3 VPN Gateway erstellen
+```hcl
+resource "azurerm_virtual_network_gateway" "example" {
+  name                = "example-vpngateway"
+  location            = "Germany West Central"
+  resource_group_name = "example-resources"
+  type                = "Vpn"
+  vpn_type            = "RouteBased"
+  sku                 = "VpnGw1"
+}
+```
+
+## 3.4 Verbindung zwischen On-Premises und Azure
+```hcl
+resource "azurerm_virtual_network_gateway_connection" "example" {
+  name                            = "example-vpn-connection"
+  location                        = "Germany West Central"
+  resource_group_name             = "example-resources"
+  virtual_network_gateway_id      = azurerm_virtual_network_gateway.example.id
+  local_network_gateway_id        = azurerm_local_network_gateway.example.id
+  connection_type                 = "IPSec"
+  shared_key                      = "SuperSecureKey"
+}
+```
+
+# 4. Multi-Factor Authentication (MFA) aktivieren
+
+## 4.1 Einrichtung in Azure AD
+1. **Azure Active Directory > Sicherheit > MFA**
+2. **MFA für alle Benutzer aktivieren**
+3. **Verifizierungsoptionen wie SMS, Authenticator-App auswählen**
+
+## 4.2 Bedingten Zugriff mit MFA in Terraform definieren
+```hcl
+resource "azurerm_conditiona_access_policy" "example" {
+  name            = "mfa-required-policy"
+  description     = "Erfordert MFA für den Zugriff auf alle Cloud-Apps"
+  state          = "enabled"
+  users {
+    include = ["all"]
+  }
+  grant_controls {
+    operator = "OR"
+    built_in_controls = ["mfa"]
+  }
+}
+```
+
+# 5. Tests und Überwachung
+
+## 5.1 Verbindung prüfen
+- Ping-Test zwischen On-Premises und Azure-VM
+- VPN-Status in **Azure Monitor** überprüfen
+
+## 5.2 Sicherheit überwachen
+- **Azure Security Center** aktivieren
+- Log Analytics für Traffic-Analyse nutzen
+
+# 6. Fazit
+Mit dieser Lösung können Unternehmen **On-Premises-Netzwerke sicher mit Azure** verbinden. Terraform ermöglicht eine **automatisierte, wiederholbare Bereitstellung** und MFA erhöht die Sicherheit.
