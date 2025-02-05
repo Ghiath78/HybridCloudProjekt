@@ -1,0 +1,64 @@
+**Projektantrag zur IHK Düsseldorf**
+
+# **1. Projekttitel:**
+**Einrichtung einer Hybrid Cloud mit sicherer VPN-Verbindung mittels Azure und Terraform**
+
+# **2. Projektbeschreibung:**
+In diesem Projekt wird eine sichere Hybrid Cloud-Umgebung durch die Implementierung einer VPN-Verbindung zwischen einer On-Premises-Infrastruktur und Microsoft Azure realisiert. Die Bereitstellung erfolgt automatisiert mithilfe von Terraform, um eine wiederholbare, skalierbare und dokumentierte Infrastruktur sicherzustellen. Ein besonderes Augenmerk liegt auf der Implementierung von Multi-Factor Authentication (MFA) zur Absicherung des Zugriffs.
+
+# **3. Projektziele:**
+- Aufbau einer sicheren und skalierbaren Hybrid Cloud-Umgebung
+- Implementierung einer VPN-Verbindung zwischen On-Premises und Azure
+- Automatisierung der Bereitstellung mittels Terraform
+- Erhöhung der Sicherheit durch Multi-Factor Authentication (MFA)
+- Überwachung und Absicherung des Netzwerkverkehrs mit Azure Security Center
+
+# **4. Projektumfeld:**
+Das Projekt findet in einer simulierten Unternehmensumgebung statt. Die On-Premises-Infrastruktur wird durch einen lokalen Server bereitgestellt, während Azure als Cloud-Provider dient. Die Netzwerkverbindung wird mit einem Azure VPN Gateway realisiert.
+
+# **5. Projektphasen:**
+1. **Analyse und Planung**
+   - Anforderungen und Zieldefinition
+   - Auswahl der geeigneten Azure-Dienste
+   - Sicherheitskonzept mit MFA und Azure Firewall
+2. **Infrastruktur-Bereitstellung**
+   - Einrichtung des Azure Virtual Network (VNet)
+   - Konfiguration des VPN Gateways
+   - Implementierung der Verbindung zum On-Premises-Netzwerk
+3. **Automatisierung mit Terraform**
+   - Entwicklung des Terraform Codes
+   - Bereitstellung der Ressourcen mittels Infrastructure as Code (IaC)
+4. **Sicherheitsmaßnahmen**
+   - Aktivierung und Konfiguration von Multi-Factor Authentication (MFA)
+   - Absicherung des Netzwerkverkehrs mit Azure Firewall
+5. **Tests und Validierung**
+   - Verbindungstests zwischen On-Premises und Azure
+   - Überwachung des VPN-Traffics mit Azure Monitor
+   - Fehleranalyse und Optimierung
+6. **Dokumentation und Abschluss**
+   - Erstellung einer technischen Dokumentation
+   - Erstellung einer Präsentation
+   - Übergabe und Abschlussbericht
+
+# **6. Geplante Technologien & Tools:**
+- Microsoft Azure (Virtual Network, VPN Gateway, Firewall, Security Center, Azure AD)
+- Terraform zur Infrastrukturautomatisierung
+- Azure CLI zur Verwaltung der Ressourcen
+- OpenVPN oder IPsec für VPN-Verbindungen
+
+# **7. Erwartetes Ergebnis:**
+Am Ende des Projekts steht eine voll funktionsfähige, sichere und skalierbare Hybrid Cloud-Umgebung, die On-Premises-Systeme sicher mit der Azure-Cloud verbindet. Durch die Nutzung von Terraform wird die Bereitstellung effizient und wiederholbar gestaltet. Die implementierten Sicherheitsmaßnahmen sorgen für einen geschützten Zugriff und eine zuverlässige Netzwerkkommunikation.
+
+# **8. Dokumentation & Nachweise:**
+- Schritt-für-Schritt-Anleitung zur Einrichtung der Infrastruktur
+- Terraform-Skripte zur automatisierten Bereitstellung
+- Testberichte zur VPN-Funktionalität
+- Sicherheitsdokumentation zur MFA-Integration
+- Abschlusspräsentation
+
+# **9. Zeitplanung:**
+Das Projekt wird innerhalb eines Zeitraums von ca. 70 Stunden umgesetzt und dokumentiert, gemäß den IHK-Vorgaben für das Abschlussprojekt.
+
+# **10. Projektbetreuer:**
+Projektbetreuer: Herren Sebastian Ahrend
+Auszubildender: Mohammad Ghiath Al Haffar
